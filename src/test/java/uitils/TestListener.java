@@ -2,6 +2,7 @@ package uitils;
 
 import io.qameta.allure.Attachment;
 import org.apache.commons.io.FileUtils;
+import org.jetbrains.annotations.NotNull;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,7 @@ public class TestListener extends BaseTest implements ITestListener {
         return message;
     }
 
-    private static void saveScreenShot(WebDriver webDriver, ITestResult result){
+    private static void saveScreenShot(WebDriver webDriver, @NotNull ITestResult result){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
         String methodName = result.getMethod().getMethodName();

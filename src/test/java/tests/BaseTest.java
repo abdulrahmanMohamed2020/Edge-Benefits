@@ -13,7 +13,7 @@ import java.net.URL;
 public class BaseTest {
 
     protected static ThreadLocal<RemoteWebDriver> driver = new ThreadLocal<>();
-    protected final String BASE_URL = "https://school.guardme.247demo.ca";
+    protected final String BASE_URL = "https://edgedev.edgebenefits.com/portal/login";
 
     public CapabilityFactory capabilityFactory = new CapabilityFactory();
 
