@@ -10,9 +10,9 @@ import static org.testng.Assert.assertEquals;
 
 public class CreateRtqBusinessInfoTest extends BaseTest{
 
-    CreateRtqBusinessInfo createRtqBusinessInfo;
-    LoginPage loginPage;
-    HomePage homePage;
+    private CreateRtqBusinessInfo createRtqBusinessInfo;
+    private LoginPage loginPage;
+    private HomePage homePage;
 
     @Test(description = "Verify that there is an error message when the username is empty")
     public void testTest(){
@@ -29,14 +29,20 @@ public class CreateRtqBusinessInfoTest extends BaseTest{
 
         createRtqBusinessInfo = new CreateRtqBusinessInfo(getDriver());
 
-        createRtqBusinessInfo.enterCompanyName("Abdo");
+        createRtqBusinessInfo.enterCompanyName("Test");
         createRtqBusinessInfo.clickOnHeadOfficeProvince();
         createRtqBusinessInfo.selectHeadOfficeProvince("Ontario");
-        createRtqBusinessInfo.enterCompanyContact("Helal");
-        createRtqBusinessInfo.enterContactEmail("hela@test.com");
-        createRtqBusinessInfo.enterContactPhone("1212112212");
-        createRtqBusinessInfo.enterApplicantsNumber("8");
+        createRtqBusinessInfo.enterCompanyContact("Ahmed");
+        createRtqBusinessInfo.enterContactEmail("abdo1@test.com");
+        createRtqBusinessInfo.enterContactPhone("(3423143431");
+        createRtqBusinessInfo.willIncludeHealthCoverage("No");
+        createRtqBusinessInfo.enterApplicantsNumber("4");
+        createRtqBusinessInfo.willPlanBeTheSameForEveryone("Yes");
+        createRtqBusinessInfo.clickOnMonthsDropDown();
+        createRtqBusinessInfo.selectMonth("November");
+        createRtqBusinessInfo.enterYear("2024");
+        createRtqBusinessInfo.clickOnNextButton();
 
-        assertEquals(loginPage.getErrorMessage(),"This field may not be blank.");
+        assertEquals(createRtqBusinessInfo.getToastMessage(),"Request was created successfully");
     }
 }

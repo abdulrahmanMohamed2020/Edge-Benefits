@@ -2,20 +2,26 @@ package org.labs247.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class CreateRtqBusinessInfo extends BasePage{
 
     private final By companyNameField = By.id("company_name");
     private final By headOfficeProvinceDropDown = By.xpath("//div[contains(@role,'combobox')]");
-    private final String headOfficeProvince = "//div[text()='@val']";
+    private final String valueFromDropdown = "//div[text()='@val']";
+    //private final String headOfficeProvinceStr = "//div[text()='@val']";
     private final By companyContactField = By.id("company_representative");
     private final By contactEmailAddressField = By.id("company_representative_email");
     private final By contactPhone = By.id("phone");
-    //private final By applicantsRequireCoverage = By.xpath("");
+    private final String healthCoverageRadioButtonStr = "//div[@id='package.has_hd']//child::label[text()='@val']";
     private final By benefitPlanCoverage = By.id("expected_applicants");
-    private final By targetEffectiveDateMonth = By.xpath("//div[@role='button']");
+    private final String samePlanForEveryoneRadioButtonStr = "//div[@id='package_has_groups']//child::label[text()='@val']";
+    private final By targetEffectiveDateMonthDropDown = By.xpath("//div[@role='button']");
     private final By targetEffectiveDateYear = By.xpath("//label[text()='Year']//following-sibling::input");
+    private final By nextButton = By.xpath("//button[@type='submit']");
+    private final By toastMessage = By.xpath("//div[@role='status']//child::div");
 
     public CreateRtqBusinessInfo(WebDriver driver) {
         super(driver);
@@ -33,7 +39,7 @@ public class CreateRtqBusinessInfo extends BasePage{
 
     @Step("Select a Head Office Province from drop-down menu")
     public void selectHeadOfficeProvince(String province) {
-        actionClick(By.xpath(headOfficeProvince.replace("@val",province)));
+        actionClick(By.xpath(valueFromDropdown.replace("@val",province)));
     }
 
     @Step("Enter the Company Contact")
@@ -51,8 +57,45 @@ public class CreateRtqBusinessInfo extends BasePage{
         typeText(contactPhone,phone);
     }
 
+    @Step("Select {0} from Will the benefit plan include Health & Dental coverage?")
+    public void willIncludeHealthCoverage(String yseOrNo) {
+        actionClick(By.xpath(healthCoverageRadioButtonStr.replace("@val",yseOrNo)));
+    }
+
+    @Step("Select {0} from Will the plan design be the same for everyone?")
+    public void willPlanBeTheSameForEveryone(String yseOrNo) {
+        actionClick(By.xpath(samePlanForEveryoneRadioButtonStr.replace("@val",yseOrNo)));
+    }
+
     @Step("Enter number in How many applicants will require coverage?")
     public void enterApplicantsNumber(String applicantsNumber) {
         typeText(benefitPlanCoverage,applicantsNumber);
     }
+
+    @Step("Click on the Months drop-down menu")
+    public void clickOnMonthsDropDown() {
+        actionClick(targetEffectiveDateMonthDropDown);
+    }
+
+    @Step("Select a Month of Target Effective Date")
+    public void selectMonth(String month) {
+        actionClick(By.xpath(valueFromDropdown.replace("@val",month)));
+    }
+
+    @Step("Enter the Year of Target Effective Date")
+    public void enterYear(String year) {
+        WebElement element = findElement(targetEffectiveDateYear);
+        element.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
+        element.sendKeys(year);
+    }
+
+    @Step("Click on the Next Button")
+    public void clickOnNextButton() {
+        actionClick(nextButton);
+    }
+
+    public String getToastMessage() {
+        return findElement(toastMessage).getText();
+    }
+
 }
