@@ -1,0 +1,5 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Jan 01 09:28:22 GMT 2023","Sun Jan 01 09:28:23 GMT 2023","1053","Surefire suite","Surefire test","tests.LoginTest","tests.LoginTest","loginWithEmptyUsername","Verify that there is an error message when the username is empty",""
+"passed","Sun Jan 01 09:28:15 GMT 2023","Sun Jan 01 09:28:16 GMT 2023","1176","Surefire suite","Surefire test","tests.LoginTest","tests.LoginTest","loginWithEmptyPassword","Verify that there is an error message when the password is empty",""
+"passed","Sun Jan 01 09:28:30 GMT 2023","Sun Jan 01 09:28:32 GMT 2023","1872","Surefire suite","Surefire test","tests.LoginTest","tests.LoginTest","loginWithValidCredentials","Verify the user is redirected to the Home page when entering valid Credentials",""
+"passed","Sun Jan 01 09:27:32 GMT 2023","Sun Jan 01 09:28:11 GMT 2023","39304","Surefire suite","Surefire test","tests.CreateRtqBusinessInfoTest","tests.CreateRtqBusinessInfoTest","testTest","Verify that there is an error message when the username is empty",""
