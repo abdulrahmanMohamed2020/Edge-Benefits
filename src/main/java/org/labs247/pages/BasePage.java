@@ -74,6 +74,19 @@ public class BasePage {
         }
     }
 
+    public void actionClickByJS(By locator) {
+        WebElement element = findElement(locator);
+        _scrollToElement(element);
+
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+        } catch (StaleElementReferenceException ex) {
+            findElement(locator).click();
+        }
+    }
+
     public void typeText(By locator, String text) {
         WebElement element = findElement(locator);
         _scrollToElement(element);
@@ -94,7 +107,7 @@ public class BasePage {
 
     private void _scrollToElement(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-
+        wait.until(ExpectedConditions.visibilityOf(element));
         Actions actions = new Actions(driver);
         actions.moveToElement(element);
         actions.perform();

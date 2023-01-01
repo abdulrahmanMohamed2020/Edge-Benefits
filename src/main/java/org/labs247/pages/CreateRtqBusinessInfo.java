@@ -37,7 +37,7 @@ public class CreateRtqBusinessInfo extends BasePage{
         actionClick(headOfficeProvinceDropDown);
     }
 
-    @Step("Select a Head Office Province from drop-down menu")
+    @Step("Select a {0} from drop-down menu")
     public void selectHeadOfficeProvince(String province) {
         actionClick(By.xpath(valueFromDropdown.replace("@val",province)));
     }
@@ -67,7 +67,7 @@ public class CreateRtqBusinessInfo extends BasePage{
         actionClick(By.xpath(samePlanForEveryoneRadioButtonStr.replace("@val",yseOrNo)));
     }
 
-    @Step("Enter number in How many applicants will require coverage?")
+    @Step("Enter {0} in How many applicants will require coverage?")
     public void enterApplicantsNumber(String applicantsNumber) {
         typeText(benefitPlanCoverage,applicantsNumber);
     }
@@ -77,12 +77,12 @@ public class CreateRtqBusinessInfo extends BasePage{
         actionClick(targetEffectiveDateMonthDropDown);
     }
 
-    @Step("Select a Month of Target Effective Date")
+    @Step("Select a {0} of Target Effective Date")
     public void selectMonth(String month) {
         actionClick(By.xpath(valueFromDropdown.replace("@val",month)));
     }
 
-    @Step("Enter the Year of Target Effective Date")
+    @Step("Enter {0} in the Year of Target Effective Date")
     public void enterYear(String year) {
         WebElement element = findElement(targetEffectiveDateYear);
         element.sendKeys(Keys.chord(Keys.CONTROL,"a",Keys.DELETE));
