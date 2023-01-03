@@ -6,7 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CreateRtqBusinessInfo extends BasePage{
+public class BusinessInfoPage extends BasePage{
 
     private final By companyNameField = By.id("company_name");
     private final By headOfficeProvinceDropDown = By.xpath("//div[contains(@role,'combobox')]");
@@ -23,7 +23,7 @@ public class CreateRtqBusinessInfo extends BasePage{
     private final By nextButton = By.xpath("//button[@type='submit']");
     private final By toastMessage = By.xpath("//div[@role='status']//child::div");
 
-    public CreateRtqBusinessInfo(WebDriver driver) {
+    public BusinessInfoPage(WebDriver driver) {
         super(driver);
     }
 
